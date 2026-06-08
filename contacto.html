@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Spira Events</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-black">
+
+<div class="spira-lines-bg"></div>
+
+<nav class="navbar navbar-expand-lg navbar-dark spira-navbar">
+    <div class="container">
+        <a class="navbar-brand spira-logo-top" href="index.html">
+            <img src="assets/img/Logo-SPIRA_letras-verdes.png" alt="Spira Events Logo">
+        </a>
+        <button class="navbar-toggler" type="button" id="spira-mobile-toggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuNavegacion">
+            <ul class="navbar-nav ms-auto spira-nav-items">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="command-screen-section mt-4 mb-5">
+    <div class="container">
+        <div class="tech-frame">
+            <div class="tech-content text-center">
+                <h1 class="text-white mb-4 type-animation">IMPACTA CON TU EVENTO</h1>
+                <p class="text-white fade-in-text">
+                    En Spira Events diseñamos realidades inmersivas que transforman cada proyecto en una experiencia inolvidable. Fusionamos tecnología avanzada, creatividad narrativa y precisión operativa para crear eventos que no solo se viven, sino que se recuerdan como hitos emocionales y estratégicos.
+                </p>
+            </div>
+
+            <div class="tech-footer-left">
+                <p><strong>Teléfono:</strong> 5764382910<br><strong>Email:</strong> spira.events@gmail.com</p>
+            </div>
+            <div class="tech-footer-right text-end">
+                <p><strong>Ubicación SPIRA:</strong><br>Ciudad de México</p>
+                <i class="fa-solid fa-crosshairs tech-icon"></i> </div>
+        </div>
+    </div>
+</section>
+
+<section class="interactive-form-section position-relative">
+    <div class="grid-bg"></div>
+
+    <div class="container position-relative z-2 py-5">
+        <div class="text-center mb-5">
+            <h3 class="text-white fw-light type-animation">Hablemos sobre tu próximo evento...</h3>
+        </div>
+
+        <div class="form-container mx-auto">
+            <div class="form-glass-card">
+                <form id="spira-contact-form">
+
+                    <div id="step-1" class="form-step">
+                        <div class="mb-4">
+                            <label class="form-label text-white">Nombre*</label>
+                            <input type="text" class="tech-input required-step-1" name="nombre" placeholder="Escribe tu nombre" required>
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label text-white">Empresa*</label>
+                            <input type="text" class="tech-input required-step-1" name="empresa" placeholder="La empresa que representas" required>
+                        </div>
+
+                        <div class="d-flex justify-content-center step-actions">
+                            <button type="button" class="tech-btn btn-next" data-next="step-2">[ SIGUIENTE ]</button>
+                        </div>
+                    </div>
+
+                    <div id="step-2" class="form-step" style="display: none; opacity: 0;">
+                        <label class="form-label text-white d-block mb-4 text-center fs-5">¿Cómo prefieres que te contactemos?*</label>
+
+                        <div class="game-options mb-4">
+                            <label class="game-option-label">
+                                <input type="checkbox" id="check-telefono" class="d-none">
+                                <span class="game-option-text">[ Teléfono ]</span>
+                            </label>
+                            <label class="game-option-label">
+                                <input type="checkbox" id="check-correo" class="d-none">
+                                <span class="game-option-text">[ Correo Electrónico ]</span>
+                            </label>
+                        </div>
+
+                        <div id="phone-details" style="display: none;" class="mb-4 p-4 border rounded border-secondary bg-dark bg-opacity-25">
+                            <label class="form-label text-white">Ingresa tu número*</label>
+                            <div class="d-flex gap-2 mb-4">
+                                <select class="tech-input" style="width: 110px;" id="country-code" name="country_code">
+                                    <option value="+52">+52 (MX)</option>
+                                    <option value="+1">+1 (US/CA)</option>
+                                    <option value="+34">+34 (ES)</option>
+                                    <option value="+54">+54 (AR)</option>
+                                    <option value="+57">+57 (CO)</option>
+                                </select>
+                                <input type="tel" class="tech-input flex-grow-1" id="telefono" name="telefono" placeholder="Ej. 5512345678" pattern="[0-9]+" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            </div>
+
+                            <label class="form-label text-white d-block mb-3 text-center">Preferencia de contacto*</label>
+                            <div class="game-options">
+                                <label class="game-option-label">
+                                    <input type="radio" name="pref_telefono" value="WhatsApp" class="d-none">
+                                    <span class="game-option-text" style="font-size: 1rem;">[ Mensajes por WhatsApp ]</span>
+                                </label>
+                                <label class="game-option-label">
+                                    <input type="radio" name="pref_telefono" value="Llamadas" class="d-none">
+                                    <span class="game-option-text" style="font-size: 1rem;">[ Llamadas telefónicas ]</span>
+                                </label>
+                                <label class="game-option-label">
+                                    <input type="radio" name="pref_telefono" value="Ambas" class="d-none">
+                                    <span class="game-option-text" style="font-size: 1rem;">[ Ambas están bien ]</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="email-details" style="display: none;" class="mb-5 p-4 border rounded border-secondary bg-dark bg-opacity-25">
+                            <label class="form-label text-white">Tu correo electrónico*</label>
+                            <input type="email" class="tech-input" id="correo" name="correo" placeholder="ejemplo@empresa.com">
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-3 step-actions">
+                            <button type="button" class="tech-btn btn-prev" style="border-color: #888; color: #888; padding: 12px 20px;" data-prev="step-1"><i class="fas fa-arrow-left"></i></button>
+                            <button type="button" class="tech-btn btn-next" data-next="step-3">[ CONTINUAR ]</button>
+                        </div>
+                    </div>
+
+                    <div id="step-3" class="form-step" style="display: none; opacity: 0;">
+                        <label class="form-label text-white d-block mb-4 text-center fs-5">¿Qué tipo de evento te interesa?*</label>
+                        <div class="game-options mb-4">
+                            <label class="game-option-label">
+                                <input type="checkbox" name="tipo_evento" value="Team Building" class="d-none checkbox-step-3">
+                                <span class="game-option-text">[ Team building / Retiro Empresarial ]</span>
+                            </label>
+                            <label class="game-option-label">
+                                <input type="checkbox" name="tipo_evento" value="Town Hall" class="d-none checkbox-step-3">
+                                <span class="game-option-text">[ Town Hall / Conferencia / Expo ]</span>
+                            </label>
+                            <label class="game-option-label">
+                                <input type="checkbox" name="tipo_evento" value="Fiesta" class="d-none checkbox-step-3">
+                                <span class="game-option-text">[ Fiesta de fin de año / Temática ]</span>
+                            </label>
+                            <label class="game-option-label">
+                                <input type="checkbox" name="tipo_evento" value="Activación" class="d-none checkbox-step-3">
+                                <span class="game-option-text">[ Activación / Lanzamiento / Torneo ]</span>
+                            </label>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="form-label text-white">Mensaje*</label>
+                            <textarea class="tech-input required-step-3" name="mensaje" rows="4" placeholder="Cuéntanos más sobre tu visión..." required></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-3 step-actions">
+                            <button type="button" class="tech-btn btn-prev" style="border-color: #888; color: #888; padding: 12px 20px;" data-prev="step-2"><i class="fas fa-arrow-left"></i></button>
+                            <button type="button" class="tech-btn" id="btn-review">[ VISTA PREVIA ]</button>
+                        </div>
+                    </div>
+                    <div id="step-summary" class="form-step" style="display: none; opacity: 0;">
+                        <h4 class="text-main-green mb-4 text-center text-uppercase">Confirmar Información</h4>
+
+                        <div class="summary-box p-4 rounded" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(0, 229, 255, 0.3);">
+                            <p class="text-white mb-2"><strong>Nombre:</strong> <span id="sum-nombre" class="text-cyan"></span></p>
+                            <p class="text-white mb-2"><strong>Empresa:</strong> <span id="sum-empresa" class="text-cyan"></span></p>
+                            <p class="text-white mb-2"><strong>Contacto Telefónico:</strong> <span id="sum-telefono" class="text-cyan"></span></p>
+                            <p class="text-white mb-2"><strong>Contacto Email:</strong> <span id="sum-correo" class="text-cyan"></span></p>
+                            <p class="text-white mb-2"><strong>Eventos:</strong> <span id="sum-eventos" class="text-cyan"></span></p>
+                            <p class="text-white mb-0"><strong>Mensaje:</strong><br> <span id="sum-mensaje" class="text-cyan"></span></p>
+                        </div>
+                    </div>
+
+                    <div id="global-actions" class="d-flex justify-content-center flex-wrap gap-4 mt-5" style="display: none; opacity: 0;">
+                        <button type="button" class="tech-btn" style="border-color: #888; color: #888;" id="btn-edit">
+                            <i class="fas fa-edit me-2"></i>[ EDITAR ]
+                        </button>
+
+                        <button type="submit" class="tech-btn" id="btn-submit">[ ENVIAR ]</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                <a class="spira-logo-top" href="#">
+                    <img src="assets/img/Logo-SPIRA_blanco.png" alt="Spira Events Logo Footer" class="footer-logo">
+                </a>
+            </div>
+            <div class="col-md-4 text-center mb-3 mb-md-0">
+                <small class="text-white" style="font-size: 0.8rem;">&copy; Spira Events todos los derechos reservados.</small>
+            </div>
+            <div class="col-md-4 text-center text-md-end social-icons">
+                <a href="#" class="fa-brands fa-instagram text-white"></a>
+                <a href="#" class="fa-brands fa-tiktok text-white"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

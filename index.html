@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spira Events</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark spira-navbar">
+    <div class="container">
+        <a class="navbar-brand spira-logo-top" href="index.html">
+            <img src="assets/img/Logo-SPIRA_letras-verdes.png" alt="Spira Events Logo">
+        </a>
+        <button class="navbar-toggler" type="button" id="spira-mobile-toggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuNavegacion">
+            <ul class="navbar-nav ms-auto spira-nav-items">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="banner-section spira-banner">
+    <img src="assets/img/banner.jpg" alt="Banner Evento" class="spira-banner-image">
+    <div class="spira-banner-band">
+        <h1 class="text-uppercase text-white fw-light">Inspirando emociones</h1>
+    </div>
+</section>
+
+<section class="mt-5 pt-4 text-center overflow-hidden" style="width: 100%;">
+    <div class="swiper spiraSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <h6 class="slide-title">Team Buildings</h6>
+                <img src="assets/img/team-building.jpg" alt="Team Buildings">
+            </div>
+            <div class="swiper-slide">
+                <h6 class="slide-title">Experiencias Sensoriales</h6>
+                <img src="assets/img/experiencias-sensoriales.jpeg" alt="Experiencias Sensoriales">
+            </div>
+            <div class="swiper-slide">
+                <a href="finDeAno.html">
+                    <h6 class="slide-title">Fiestas de fin de año y temáticas</h6>
+                    <img src="assets/img/fiesta-fin-de-ano.jpg" alt="Fiestas de fin de año">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <h6 class="slide-title">Town Halls</h6>
+                <img src="assets/img/town-halls.jpg" alt="Town Halls">
+            </div>
+            <div class="swiper-slide">
+                <h6 class="slide-title">Lanzamientos de Marcas</h6>
+                <img src="assets/img/lanzamiento-marca.jpg" alt="Lanzamiento de Marcas">
+            </div>
+        </div>
+
+        <div class="swiper-button-prev custom-swiper-btn"></div>
+        <div class="swiper-button-next custom-swiper-btn"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <p class="text-main-green mt-4 fw-light">¿Listo para lo extraordinario? Entra en modo interactivo</p>
+</section>
+
+<section class="container mt-5 pt-5 text-center proposal-container" id="propuesta-section">
+    <h2 class="text-main-green mb-5 text-uppercase">Nuestra propuesta de valor</h2>
+
+    <div class="value-carousel" id="valueCarousel">
+
+        <div class="value-item sphere-anim">
+            <div class="sphere-wrapper">
+                <video class="sphere-img" autoplay loop muted playsinline>
+                    <source src="assets/video/esfera_1.mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            </div>
+            <div class="value-text">
+                <h4 class="text-sub-green">PERSONALIZACIÓN TOTAL</h4>
+                <p>Cada experiencia se adapta a la historia, marca o persona que la inspira.</p>
+            </div>
+        </div>
+
+        <div class="value-item sphere-anim">
+            <div class="sphere-wrapper">
+                <video class="sphere-img" autoplay loop muted playsinline>
+                    <source src="assets/video/esfera_2.mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            </div>
+            <div class="value-text">
+                <h4 class="text-sub-green">EXPERIENCIA INMERSIVA + TECNOLOGÍA</h4>
+                <p>Diseñamos con todos los sentidos e incluimos la innovación al servicio del impacto.</p>
+            </div>
+        </div>
+
+        <div class="value-item sphere-anim">
+            <div class="sphere-wrapper">
+                <video class="sphere-img" autoplay loop muted playsinline>
+                    <source src="assets/video/esfera_3.mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            </div>
+            <div class="value-text">
+                <h4 class="text-sub-green">ESTRATEGIA + EMOCIÓN</h4>
+                <p>Unimos objetivos con experiencias inolvidables.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                <a class="spira-logo-top" href="#">
+                    <img src="assets/img/Logo-SPIRA_blanco.png" alt="Spira Events Logo Footer" class="footer-logo">
+                </a>
+            </div>
+            <div class="col-md-4 text-center mb-3 mb-md-0">
+                <small class="text-white" style="font-size: 0.8rem;">
+                    &copy; Spira Events todos los derechos reservados.
+                </small>
+            </div>
+            <div class="col-md-4 text-center text-md-end social-icons">
+                <a href="#" class="fa-brands fa-instagram text-white"></a>
+                <a href="#" class="fa-brands fa-tiktok text-white"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="whatsapp-widget" id="whatsapp-widget">
+    <div class="wa-header">
+        <div class="wa-header-left">
+            <div class="wa-icon"></div>
+            <span>Cotiza tu evento</span>
+        </div>
+        <button class="wa-close" id="close-wa-widget"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="wa-body">
+        <div class="wa-message">
+            <strong>Gracias por confiar en Spira Events</strong><br>
+            ¿Qué evento estás por celebrar?
+        </div>
+        <a href="https://wa.me/+525574628905" target="_blank" class="wa-btn">
+            <i class="fa-brands fa-whatsapp"></i> Chatea por WhatsApp
+        </a>
+    </div>
+</div>
+
+<div class="wa-circular-btn" id="open-wa-widget">
+    <i class="fa-brands fa-whatsapp"></i>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>

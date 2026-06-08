@@ -1,0 +1,1259 @@
+/* ==============================
+   ESTILOS GENERALES
+   ============================== */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.text-main-green { color: #97BF3F !important; }
+.text-sub-green { color: #25D467 !important; }
+
+
+/* Página activa: Blanco y subrayado */
+.nav-link.active {
+    color: #ffffff !important;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 2px;
+}
+.nav-link:hover {
+    color: #ffffff !important;
+}
+
+/* Ocultar menú normal en móvil */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        display: none !important;
+    }
+}
+
+/* ==============================
+   MENÚ MÓVIL PERSONALIZADO (Muestra cajas)
+   ============================== */
+.spira-mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 1050; /* Por encima de todo */
+    display: none; /* Inicialmente oculto */
+    overflow-y: auto;
+    padding-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.spira-mobile-menu.show {
+    display: block;
+}
+
+.spira-mobile-menu-content {
+    padding-bottom: 50px;
+}
+
+/* Botón 'X' de cierre */
+.spira-mobile-close {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2.5rem;
+    padding: 0;
+    cursor: pointer;
+}
+.spira-mobile-close:hover {
+    color: #97BF3F;
+}
+
+/* Tarjetas (Cajas) del menú */
+.spira-mobile-card {
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    border: none;
+    min-height: 250px; /* Altura de las cajas */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.spira-mobile-card:hover {
+    transform: scale(1.02);
+}
+
+.spira-mobile-card-body {
+    background-color: rgba(0,0,0,0.5); /* Overlay semitransparente sobre la imagen */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Texto en esquina superior izquierda */
+}
+
+.spira-mobile-card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Botón secundario en la primera tarjeta */
+.spira-sub-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.spira-sub-btn:hover {
+    color: #97BF3F;
+}
+
+/* ==============================
+   BANNER PRINCIPAL (Updated)
+   ============================== */
+.spira-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.spira-banner-image {
+    width: 100%;
+    height: 350px; /* Altura del banner */
+    object-fit: cover;
+    display: block;
+}
+.spira-banner-band {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    /* Color #284B59 con 78% de transparencia */
+    background-color: rgba(40, 75, 89, 0.78);
+    padding: 40px 0;
+    text-align: center;
+    z-index: 10;
+}
+.banner-text {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ==============================
+   BARRA DE NAVEGACIÓN (Actualizada)
+   ============================== */
+.spira-navbar {
+    padding: 20px 0;
+}
+.spira-logo-top img {
+    max-height: 150px;
+    width: auto; /* Esto asegura que no se deforme o estire */
+    transition: all 0.3s ease; /* Le da suavidad si luego le agregamos efectos */
+
+}
+.spira-nav-items {
+    width: 50%;
+    justify-content: space-between;
+}
+.nav-link {
+    color: #97BF3F !important;
+    font-weight: 300; /* Letra más delgada */
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    position: relative; /* Necesario para la raya personalizada */
+    padding-bottom: 5px; /* Da espacio para la raya */
+    transition: color 0.3s ease;
+}
+
+/* Estado Activo: Letra blanca y línea más larga */
+.nav-link.active {
+    color: #ffffff !important;
+    text-decoration: none; /* Quitamos el subrayado por defecto */
+}
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -15%; /* Empieza un poco antes de la palabra */
+    width: 130%; /* Termina un poco después de la palabra */
+    height: 1px;
+    background-color: #ffffff;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+}
+
+/* ==============================
+   CARRUSEL SWIPER (Efecto Center Mode)
+   ============================== */
+.spiraSwiper {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+/* 1. Las imágenes de los lados (Inactivas) */
+.swiper-slide {
+    width: 55% !important;
+
+    /* 👇 TRANSICIÓN LIMPIA Y SINCRONIZADA 👇 */
+    transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease !important;
+
+    opacity: 0.3;
+    transform: scale(0.65);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: blur(2px);
+}
+
+/* 🖥️ BLINDAJE PARA ESCRITORIO: Obligamos a Swiper a respetar el 55% */
+@media (min-width: 992px) {
+    .swiper-slide {
+        width: 55% !important;
+    }
+}
+
+/* Estilo para la imagen que está al centro */
+.swiper-slide-active {
+    opacity: 1 !important;
+    transform: scale(1) !important; /* Crece a su tamaño original */
+    filter: blur(0px); /* Nitidez total */
+    z-index: 10;
+}
+/* 4. TÍTULO CENTRAL ACTIVO (Grande y con Resalte) */
+.swiper-slide-active .slide-title {
+    font-size: 2.5rem !important; /* Tamaño "Extra Large" */
+    font-weight: 700 !important; /* Negrita/Grosor máximo */
+    opacity: 1 !important;
+    margin-bottom: 30px; /* Equivalente al mb-5 de Bootstrap */
+    letter-spacing: 3px;
+    color: #ffffff;
+    /* Un pequeño resplandor sutil al texto para que destaque */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 450px; /* Altura de las fotos */
+    object-fit: cover;
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* 2. Títulos de las imágenes laterales (Pequeños) */
+.slide-title {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 10px;
+    font-size: 0.8rem; /* Tamaño discreto */
+    letter-spacing: 1px;
+    transition: all 0.5s ease;
+    opacity: 0.4;
+}
+
+/* Botones circulares grises personalizados */
+.custom-swiper-btn {
+    top: 65% !important; /* Bajamos un poco los botones para dar aire al título */
+}
+.custom-swiper-btn:hover {
+    background-color: rgba(140, 122, 114, 1);
+}
+.custom-swiper-btn::after {
+    font-size: 1.2rem !important; /* Tamaño de la flecha */
+    font-weight: bold;
+}
+
+/* Posicionar los botones pisando el espacio entre imágenes */
+.swiper-button-prev {
+    left: 18% !important;
+}
+.swiper-button-next {
+    right: 18% !important;
+}
+
+/* Ajustes para tabletas y teléfonos */
+@media (max-width: 991px) {
+    .swiper-button-prev { left: 8% !important; }
+    .swiper-button-next { right: 8% !important; }
+}
+@media (max-width: 768px) {
+    .swiper-slide { width: 85%; }
+    .swiper-slide img { height: 350px; }
+    .swiper-button-prev, .swiper-button-next { display: none !important; } /* Ocultar botones en móvil (se hace scroll táctil) */
+}
+/* 📱 Ajustes para Mobile (Mantener legibilidad) */
+@media (max-width: 768px) {
+    .swiper-slide-active .slide-title {
+        font-size: 1.5rem !important; /* Un poco más pequeño en celular */
+        margin-bottom: 20px;
+    }
+    .swiper-slide {
+        width: 85% !important;
+        transform: scale(0.8); /* En móvil no encogemos tanto las de los lados */
+    }
+}
+
+/* ==============================
+   PROPUESTA DE VALOR (Hovers)
+   ============================== */
+.propuesta-item {
+    margin-bottom: 70px;
+}
+.propuesta-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%; /* Estilo circular */
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Girar la imagen al hover */
+.propuesta-item:hover .propuesta-img {
+    transform: rotate(360deg);
+}
+
+/* Agrandar el subtítulo al hover */
+.propuesta-subt {
+    transition: transform 0.3s ease;
+}
+.propuesta-item:hover .propuesta-subt {
+    transform: scale(1.1);
+}
+
+/* ==============================
+   FOOTER (PIE DE PÁGINA) (Degradado)
+   ============================== */
+footer {
+    /* Difuminado de 1A4050 hacia negro */
+    background: linear-gradient(to top, #1A4050 0%, #000000 100%);
+    padding: 60px 0 40px 0;
+    margin-top: 50px;
+}
+.footer-logo {
+    max-height: 50px; /* Tamaño logo inferior */
+}
+.social-icons a {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-left: 15px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+/* Colores originales de las redes al pasar el mouse */
+.social-icons a:hover.fa-instagram { color: #E1306C; }
+.social-icons a:hover.fa-tiktok { color: #69C9D0; }
+
+/* ==============================
+   WIDGET FLOTANTE DE WHATSAPP
+   ============================== */
+.whatsapp-widget {
+    position: fixed; /* Esto hace que jamás se mueva al hacer scroll */
+    bottom: 30px;
+    right: 30px;
+    width: 300px;
+    background-color: #f0f2f5; /* Fondo grisáceo estilo chat */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    overflow: visible;
+}
+
+/* Cabecera verde oscuro */
+.wa-header {
+    background-color: #007E5C;
+    color: #ffffff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.wa-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wa-icon {
+    width: 25px;
+    height: 25px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    /* Si quieres poner un icono dentro, puedes usar background-image aquí */
+}
+
+.wa-close {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.wa-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Globo de mensaje blanco */
+.wa-message {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 0 15px 15px 15px; /* Crea la forma de burbuja de chat */
+    color: #333333;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Piquito del globo de mensaje */
+.wa-message::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    border-width: 0 10px 12px 0;
+    border-style: solid;
+    border-color: transparent #ffffff transparent transparent;
+}
+
+/* Botón verde para abrir pestaña */
+.wa-btn {
+    background-color: #25D467;
+    color: #ffffff !important;
+    text-align: center;
+    padding: 12px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+    margin-top: 5px;
+}
+
+.wa-btn:hover {
+    transform: scale(1.03);
+}
+
+/* Botón circular (Oculto por defecto, aparece si cierran la caja) */
+.wa-circular-btn {
+    position: fixed; /* Tampoco se mueve al hacer scroll */
+    bottom: 30px;
+    right: 30px;
+    background-color: #007E5C;
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: none; /* Inicia oculto */
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.wa-circular-btn:hover {
+    transform: scale(1.1);
+}
+
+/* ==============================
+   PUNTOS DE PAGINACIÓN SWIPER (Global)
+   ============================== */
+
+   /* Posicionar los botones justo sobre las imágenes laterales */
+   .swiper-button-prev {
+       left: 15% !important; /* Ajusta este porcentaje si lo quieres más al centro o a la orilla */
+       z-index: 20;
+   }
+   .swiper-button-next {
+       right: 15% !important;
+       z-index: 20;
+   }
+
+   /* Y para móviles, como la imagen ocupa casi todo, escondemos los botones o los pegamos a la orilla */
+   @media (max-width: 991px) {
+       .swiper-slide {
+           width: 85% !important; /* En móvil, la imagen principal ocupa el 85% */
+       }
+       .swiper-button-prev { left: 2% !important; }
+       .swiper-button-next { right: 2% !important; }
+   }
+.swiper-pagination-bullet {
+    background-color: #ffffff;
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+}
+.swiper-pagination-bullet-active {
+    background-color: #97BF3F;
+    opacity: 1;
+}
+/* Contenedor principal de la animación */
+.value-carousel {
+    position: relative;
+    height: 600px; /* Ajusta según el alto que desees */
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.value-item {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); /* Transición suave */
+    cursor: pointer;
+    left: 0;
+}
+
+.sphere-wrapper {
+    width: 250px; /* Tamaño base de la esfera */
+    display: flex;
+    justify-content: center;
+}
+
+.sphere-img {
+    width: 100%;
+    border-radius: 90%;
+    transition: transform 0.7s ease;
+}
+
+.value-text {
+    flex: 1;
+    text-align: left;
+    padding-left: 30px;
+    transition: opacity 0.5s ease, transform 0.7s ease;
+}
+
+.value-text p {
+    color: #ffffff;
+    max-width: 400px;
+}
+
+/* --- ESTADOS DE POSICIÓN ESFERAS--- */
+/* Nuevo estado base para las esferas en GSAP */
+.value-carousel {
+    position: relative;
+    height: 400px; /* Reducimos la altura, GSAP hará el resto */
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sphere-anim {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* Inician escondidas abajo, GSAP las moverá */
+    transform: translateY(100px) scale(0.65);
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Ajustes para móviles: se apilan para que no pierdan legibilidad */
+@media (max-width: 768px) {
+    .value-carousel { height: 800px; }
+    .value-item { flex-direction: column; text-align: center; }
+    .value-text { text-align: center; padding-left: 0; padding-top: 15px; }
+    .sphere-wrapper { width: 200px; }
+}
+
+/* ==============================
+   ADAPTACIÓN MOBILE Y TABLET
+   ============================== */
+@media (max-width: 991px) {
+
+    /* 1. Carrusel a 1 sola imagen */
+    .swiper-slide {
+        width: 100% !important; /* Ocupa todo el ancho */
+        opacity: 1;
+        transform: scale(1);
+    }
+    .slide-title {
+        display: none; /* Oculta el título superior en móvil */
+    }
+    .swiper-button-prev { left: 10px !important; }
+    .swiper-button-next { right: 10px !important; }
+    .custom-swiper-btn {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    .custom-swiper-btn::after {
+        font-size: 1rem !important;
+    }
+
+    /* 2. Propuesta de Valor (Texto sobre imagen) */
+    .propuesta-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    .propuesta-img {
+        max-width: 280px; /* Tamaño de la esfera en móvil */
+    }
+    .propuesta-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%; /* Ajusta al ancho de la esfera */
+        z-index: 5;
+        text-align: center !important;
+        /* Sombras al texto para que no se pierda con el color de la esfera */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    .propuesta-subt {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+    .propuesta-text p {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+
+    /* 3. Botón WhatsApp (Caja oscura con texto) */
+    .whatsapp-widget {
+        display: none !important; /* Ocultamos el widget gigante en móvil */
+    }
+    .wa-circular-btn {
+        display: flex !important;
+        flex-direction: column;
+        background-color: #172F36; /* Color azul muy oscuro de tu imagen */
+        border-radius: 12px;
+        width: auto;
+        height: auto;
+        padding: 8px 15px;
+        bottom: 20px;
+        right: 20px;
+        text-decoration: none;
+    }
+    .wa-circular-btn i {
+        color: #25D467;
+        font-size: 1.8rem;
+        margin-bottom: 3px;
+    }
+    .wa-mobile-text {
+        display: block;
+        color: #ffffff;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: none;
+    }
+}
+
+/* Ocultar el texto del botón de WA en PC */
+@media (min-width: 992px) {
+    .wa-mobile-text {
+        display: none;
+    }
+}
+
+
+
+/* ==============================
+   PÁGINA EXPERIENCIAS / SERVICIOS
+   ============================== */
+
+/* Fondo de líneas / espirales */
+/* ==============================
+   FONDO DE LÍNEAS / ESPIRALES (PÁGINA EXPERIENCIAS)
+   ============================== */
+.spira-lines-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* 1. Pon aquí el nombre exacto con el que guardaste la imagen de la espiral */
+    background-image: url('../img/tunnel-grid-vector.jpg');
+
+    /* 2. Hacemos que se repita como un patrón */
+    background-repeat: repeat;
+
+    /* 3. AGRANDAMOS LA IMAGEN. 1200px hace que la espiral se vea gigante y abarque mucho espacio.
+          Puedes subir o bajar este número (ej. 800px o 1500px) hasta que te guste el tamaño */
+    background-size: 2000px;
+
+    /* 4. Posicionamos desde el centro para que los cortes del patrón se vean simétricos */
+    background-position: center;
+
+    /* 5. OPACIDAD: La bajamos muchísimo (al 10% o 15%) para lograr el efecto sutil del mockup
+          y que las letras blancas se sigan leyendo perfectamente */
+    opacity: 0.15;
+
+    z-index: -1; /* Lo manda al fondo de todo */
+    pointer-events: none; /* Evita que el fondo estorbe al hacer clics */
+}
+
+/* Subtítulos de las tarjetas (Azul Turquesa) */
+.service-subtitle {
+    color: #38A3A5; /* Color verde/azulado */
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+/* --- SISTEMA DE GRID (CUADRÍCULAS) --- */
+.grid-services {
+    display: grid;
+    gap: 30px;
+}
+
+/* Grid para Team Building (1 grande izq, 2 chicos derecha) */
+.grid-3-layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 200px;
+}
+.card-tall {
+    grid-row: span 2; /* Ocupa las dos filas de altura */
+}
+
+/* Grid para las otras secciones (2 columnas, 2 filas) */
+.grid-4-layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+
+/* Adaptación a celular */
+@media (max-width: 768px) {
+    .grid-3-layout, .grid-4-layout {
+        grid-template-columns: 1fr; /* 1 sola columna en móvil */
+        grid-template-rows: auto;
+    }
+    .card-tall { grid-row: span 1; height: 300px;}
+    .flip-card { height: 250px; }
+    .w-50, .w-25 { width: 100% !important; } /* Títulos al 100% en móvil */
+}
+
+/* --- EFECTO HOVER (OSCURECER Y MOSTRAR TEXTO) --- */
+.flip-card {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    overflow: hidden; /* Asegura que nada se salga de los bordes curvos */
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Prepara la imagen para un ligero zoom */
+}
+
+/* Capa que oscurece la imagen y contiene el texto */
+.flip-card-back {
+    /* Color de fondo oscuro con 85% de opacidad para dejar ver la foto de fondo */
+    background-color: rgba(26, 34, 38, 0.85);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    text-align: left;
+    z-index: 2; /* Asegura que esté por encima de la imagen */
+
+    /* Magia de la animación: Oculto por defecto */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.flip-card-back ul {
+    padding-left: 20px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* --- ACCIÓN AL PONER EL MOUSE ENCIMA (HOVER) --- */
+.flip-card:hover .flip-card-back {
+    opacity: 1; /* Aparece la capa oscura con el texto */
+}
+
+.flip-card:hover .flip-card-front img {
+    transform: scale(1.08); /* Ligero acercamiento a la foto para darle vida */
+}
+/* --- FORMAS ORGÁNICAS (Bordes redondeados alternos) --- */
+/* Forma 1: Esquina superior-izq y inferior-der curvas */
+.shape-1 { border-radius: 60px 0 60px 0; }
+
+/* Forma 2: Esquina superior-der y inferior-izq curvas */
+.shape-2 { border-radius: 0 60px 0 60px; }
+
+/* Forma 3: Todas curvas excepto inferior-der */
+.shape-3 { border-radius: 40px 40px 40px 0; }
+
+/* Forma 4: Formato hoja ancho */
+.shape-4 { border-radius: 0 50px 0 0; }
+
+
+/* ==============================
+   PÁGINA NOSOTROS
+   ============================== */
+
+/* Para que el Nav flote sobre el video */
+.fixed-top { position: absolute; width: 100%; z-index: 1030; background: transparent !important; }
+/* Si haces scroll y quieres que el nav tenga fondo negro, lo podemos agregar con JS después */
+
+/* --- SECCIÓN VIDEO BANNER --- */
+.video-banner-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa el 100% de la pantalla */
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bg-video {
+    position: absolute;
+    top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+    object-fit: cover;
+}
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Oscurece el video para que el texto resalte */
+    z-index: 2;
+}
+.video-content {
+    position: relative;
+    z-index: 3;
+    padding-top: 50px;
+}
+
+/* --- SECCIÓN ASÍ TRABAJAMOS (Lista Animada) --- */
+.steps-container {
+    position: relative;
+    max-width: 450px;
+    padding: 20px 0;
+}
+/* La línea vertical base (oscura) */
+.steps-line {
+    position: absolute;
+    top: 0; left: 14px;
+    width: 2px; height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    overflow: hidden; /* Clave para que la luz no se salga */
+}
+/* La línea de progreso que bajará con el scroll */
+.steps-progress {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 0%; /* Inicia en 0% */
+    background-color: #00e5ff; /* Color luminoso */
+}
+.step-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 45px;
+    cursor: pointer;
+    z-index: 2;
+}
+/* El punto o bolita */
+.step-dot {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background-color: #111;
+    border: 2px solid #555;
+    margin-right: 25px;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 0 rgba(0, 255, 255, 0);
+}
+.step-text {
+    color: #555; /* Texto apagado por defecto */
+    font-weight: 300;
+    font-size: 1.2rem;
+    opacity: 0.3; /* Lo apagamos un poco más para que resalte al encender */
+    transition: all 0.6s ease;
+    margin: 0;
+}
+
+/* ESTADO ACTIVO (Iluminado) */
+.step-item.active .step-dot {
+    background-color: #00e5ff; /* Color Cyan Brillante de tu imagen */
+    border-color: #00e5ff;
+    box-shadow: 0 0 20px 5px rgba(0, 229, 255, 0.6); /* Resplandor */
+}
+.step-item.active .step-text {
+    color: #00e5ff; /* Se ilumina la letra */
+    opacity: 1; /* Se vuelve totalmente visible */
+    transform: scale(1.05); /* Crece un poquito */
+    transform-origin: left;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+/* --- SECCIÓN MISIÓN, VISIÓN, VALORES --- */
+.mvv-section {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.mvv-bg-lines {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100%; height: 100%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* --- NUEVA ESTRUCTURA MVV EN COLUMNAS --- */
+.mvv-item {
+    margin-bottom: 2rem;
+    transition: filter 0.5s ease;
+}
+
+.mvv-column-title {
+    color: #97BF3F; /* Verde Spira */
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(151, 191, 63, 0.2);
+    opacity: 1; /* Los títulos siempre son visibles */
+    margin-bottom: 1.5rem;
+}
+
+.mvv-column-text {
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    padding: 0 10px;
+    opacity: 0; /* Textos ocultos esperando al scroll */
+    transform: translateY(30px); /* Un poco más abajo para el efecto de subida */
+    transition: opacity 0.3s ease;
+}
+
+/* Efecto de resplandor cuando la columna está activa */
+.mvv-item.active-glow {
+    filter: drop-shadow(0 0 15px rgba(151, 191, 63, 0.4));
+}
+
+/* --- AJUSTES MÓVILES --- */
+@media (max-width: 768px) {
+    .video-content p { width: 95% !important; }
+    .section-asi-somos p { width: 95% !important; }
+    .step-text { font-size: 1rem; }
+
+    /* Ajustes específicos para MVV en celular */
+    .mvv-section {
+        min-height: 100vh;
+    }
+    .mvv-item {
+        margin-bottom: 100px; /* Más espacio para poder hacer scroll cómodo */
+    }
+    .mvv-column-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* ==============================
+   PÁGINA DE CONTACTO (TECH VIBE)
+   ============================== */
+
+/* --- SECCIÓN 1: PANTALLA DE COMANDOS --- */
+.command-screen-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tech-frame {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    /* AQUÍ PONES LA RUTA DE TU MARCO AZUL VERSIÓN ESCRITORIO */
+    background-image: url('../img/marco-azul-escritorio.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 80px 60px 120px 60px; /* Da espacio a las esquinas */
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tech-content h1 {
+    letter-spacing: 3px;
+    font-size: 2.5rem;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.5); /* Resplandor cyan */
+}
+
+.tech-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+/* Textos de las esquinas del marco */
+.tech-footer-left, .tech-footer-right {
+    position: absolute;
+    bottom: 40px;
+    color: #00e5ff; /* Color cyan del diseño */
+    font-size: 1rem;
+    font-family: monospace; /* Le da el toque hacker */
+    letter-spacing: 1px;
+}
+.tech-footer-left { left: 50px; }
+.tech-footer-right { right: 50px; }
+
+.tech-icon {
+    font-size: 2rem;
+    margin-top: 5px;
+    animation: pulseRadar 1s infinite;
+}
+
+@keyframes pulseRadar {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Cambio de imagen para celular */
+@media (max-width: 768px) {
+    .tech-frame {
+        /* AQUÍ PONES LA RUTA DE TU MARCO AZUL VERSIÓN MÓVIL */
+        background-image: url('../img/marco-azul-movil.png');
+        padding: 60px 30px 100px 30px;
+        background-size: cover;
+    }
+    .tech-content h1 { font-size: 1.8rem; }
+    .tech-content p { font-size: 0.95rem; }
+    .tech-footer-left { left: 30px; bottom: 30px; font-size: 0.7rem; }
+    .tech-footer-right { right: 30px; bottom: 30px; font-size: 0.7rem; }
+}
+
+/* --- SECCIÓN 2: FORMULARIO INTERACTIVO --- */
+/* ==============================
+   ESTILOS FORMULARIO INTERACTIVO (WIZARD)
+   ============================== */
+.text-cyan { color: #00e5ff; }
+
+/* Opciones estilo videojuego convertidas en inputs reales */
+.game-option-label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.game-option-text {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: monospace;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+}
+
+/* Hover effect */
+.game-option-label:hover .game-option-text {
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Estado Seleccionado (Cuando el radio o checkbox oculto está marcado) */
+.game-option-label input:checked + .game-option-text {
+    color: #97BF3F; /* Verde Spira */
+    text-shadow: 0 0 15px rgba(151, 191, 63, 0.8);
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+/* Estilo para inputs con error */
+.input-error {
+    border-color: #ff3333 !important;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.5) !important;
+}
+
+/* Asegurar que las opciones se centren en móvil */
+@media (max-width: 768px) {
+    .game-option-text { font-size: 1rem; }
+}
+
+.grid-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* AQUÍ PONES LA IMAGEN DE TU MALLA 3D / RELIEVE */
+    background-image: url('../img/fondo-malla-3d.png');
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+/* Opciones de videojuego */
+.game-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.game-option {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: monospace;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+}
+
+.game-option:hover {
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.game-option.selected {
+    color: #97BF3F; /* Verde Spira */
+    text-shadow: 0 0 15px rgba(151, 191, 63, 0.8);
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+/* Botón Tecnológico / Cyber */
+.tech-btn {
+    background-color: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+    border: 1px solid #00e5ff;
+    padding: 12px 30px;
+    font-family: monospace;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 25px; /* Bordes redondeados del mockup */
+}
+.tech-btn:hover:not(:disabled) {
+    background-color: #00e5ff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+}
+.tech-btn:disabled {
+    border-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.2);
+    cursor: not-allowed;
+}
+
+/* Diseño del Formulario (Glassmorphism oscuro) */
+.form-container {
+    max-width: 600px;
+}
+.form-glass-card {
+    background: rgba(20, 25, 30, 0.8); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(10px); /* Desenfoque de cristal */
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.tech-input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+.tech-input:focus {
+    outline: none;
+    border-color: #00e5ff;
+    background-color: rgba(0, 229, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.tech-radio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.tech-radio input[type="radio"] {
+    accent-color: #00e5ff; /* Pinta el circulito de cyan */
+    transform: scale(1.2);
+}
+/* Estilo cibernético para el select de país */
+select.tech-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300e5ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+    cursor: pointer;
+}
+select.tech-input option {
+    background-color: #14191e;
+    color: #fff;
+}
