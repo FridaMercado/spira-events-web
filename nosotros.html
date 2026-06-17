@@ -24,15 +24,27 @@
             <img src="assets/img/Logo-SPIRA_letras-verdes.png" alt="Spira Events Logo">
         </a>
 
-        <button class="navbar-toggler" type="button" id="spira-mobile-toggle">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <button 
+    class="navbar-toggler" 
+    type="button" 
+    id="spira-mobile-toggle"
+    aria-controls="menuNavegacion"
+    aria-expanded="false"
+    aria-label="Abrir menú de navegación">
+    <span class="navbar-toggler-icon"></span>
+</button>
 
         <div class="collapse navbar-collapse" id="menuNavegacion">
             <ul class="navbar-nav ms-auto spira-nav-items">
-                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link active" href="nosotros.html">Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="nosotros.html">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="conocenos.html">Conócenos</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -173,5 +185,34 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("spira-mobile-toggle");
+        const menu = document.getElementById("menuNavegacion");
+
+        if (!toggleButton || !menu) return;
+
+        toggleButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            menu.classList.toggle("show");
+
+            const isOpen = menu.classList.contains("show");
+            toggleButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        const menuLinks = menu.querySelectorAll(".nav-link");
+
+        menuLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (window.innerWidth < 992) {
+                    menu.classList.remove("show");
+                    toggleButton.setAttribute("aria-expanded", "false");
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
