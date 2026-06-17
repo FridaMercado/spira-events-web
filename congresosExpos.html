@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización Panorámica 360° - Spira Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <style>
+        /* Estilos personalizados */
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Evitar scrollbar */
+        }
+        #panorama-container {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        /* Flechas de navegación personalizadas */
+        .pnlm-controls {
+            display: none !important; /* Ocultar controles por defecto de Pannellum */
+        }
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .nav-arrow:hover {
+            opacity: 1;
+        }
+        .arrow-left {
+            left: 20px;
+        }
+        .arrow-right {
+            right: 20px;
+        }
+        /* Puntos de interés (Hotspots) parpadeantes */
+        .pnlm-hotspot.custom-hotspot {
+            background-color: transparent !important;
+            border: 2px solid green;
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            animation: pulse-green 1.5s infinite;
+            cursor: pointer;
+        }
+        @keyframes pulse-green {
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(0, 128, 0, 0);
+            }
+            100% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(0, 128, 0, 0);
+            }
+        }
+        /* Popup de texto translúcido */
+        #hotspot-popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            max-width: 80%;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.85); /* Fondo negro translúcido */
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            display: none; /* Oculto por defecto */
+            z-index: 20;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        #hotspot-popup .btn-close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+        #hotspot-popup .btn-close-popup:hover {
+            opacity: 1;
+        }
+        /* Header y Footer superpuestos */
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+            padding: 15px;
+            z-index: 10;
+        }
+        .header-contact-link {
+            margin-right: clamp(20px, 3vw, 48px);
+            font-weight: 500;
+        }
+        .footer-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            padding: 15px;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            z-index: 10;
+        }
+        .brand-logo {
+            filter: brightness(0) invert(1); /* Logo blanco */
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-overlay d-flex justify-content-between align-items-center">
+    <a class="navbar-brand spira-logo-top" href="index.html">
+        <img src="assets/img/Logo-SPIRA_blanco.png" alt="Logo Spira Events" class="brand-logo" height="200">
+    </a>
+
+    <a href="contacto.html" class="text-white text-decoration-none header-contact-link">
+        Contacto
+    </a>
+</div>
+
+<div id="panorama-container">
+</div>
+
+<div class="nav-arrow arrow-left" onclick="panorama.lookAt(panorama.getPitch(), panorama.getYaw() - 30)"><i class="bi bi-arrow-left-circle"></i></div>
+<div class="nav-arrow arrow-right" onclick="panorama.lookAt(panorama.getPitch(), panorama.getYaw() + 30)"><i class="bi bi-arrow-right-circle"></i></div>
+
+<div id="hotspot-popup">
+    <i class="bi bi-x btn-close-popup" onclick="closePopup()"></i>
+    <h5 class="hotspot-title">Catering Excellence</h5>
+    <p class="hotspot-text">Nuestro servicio de meseros premium garantiza una experiencia culinaria inolvidable para tus invitados.</p>
+</div>
+
+<div class="footer-overlay">
+    <p class="mb-0">©2023 SpiraEvents. Todos los derechos reservados.</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+<script>
+    // Inicializar Pannellum
+    var panorama = pannellum.viewer('panorama-container', {
+        "type": "equirectangular",
+        "panorama": "assets/img/congresosExpos-panoramica.jpg", // Usa tu imagen panorámica aquí
+        "autoLoad": true,
+        "autoRotate": -1, // Rotación automática lenta (izquierda)
+        "compass": false,
+        "hotSpots": [
+            {
+                "pitch": -15, // Coordenada vertical
+                "yaw": -30,   // Coordenada horizontal
+                "cssClass": "custom-hotspot", // Clase CSS para el parpadeo
+                "createTooltipFunc": function() {}, // Desactivar tooltip por defecto
+                "clickHandlerFunc": function(evt, args) { // Función al hacer clic
+                    openPopup("Servicio de catering", "Nuestro servicio de meseros premium garantiza una experiencia culinaria inolvidable para tus invitados.");
+                }
+            },
+            {
+                "pitch": -25,
+                "yaw": 100,
+                "cssClass": "custom-hotspot",
+                "createTooltipFunc": function() {},
+                "clickHandlerFunc": function(evt, args) {
+                    openPopup("Área de Foto Boot", "Photo Boot opportunity para tu evento personalizado con props divertidos.");
+                }
+            },
+            {
+                "pitch": 0,
+                "yaw": 160,
+                "cssClass": "custom-hotspot",
+                "createTooltipFunc": function() {},
+                "clickHandlerFunc": function(evt, args) {
+                    openPopup("Cócteles Exclusivos", "Nuestra barra libre ofrece una amplia variedad de cócteles artesanales y bebidas.");
+                }
+            }
+        ]
+    });
+
+    // Funciones para manejar el popup
+    function openPopup(title, text) {
+        document.querySelector('.hotspot-title').innerText = title;
+        document.querySelector('.hotspot-text').innerText = text;
+        document.getElementById('hotspot-popup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('hotspot-popup').style.display = 'none';
+    }
+
+    // Asegurar que el visor se ajuste al viewport
+    window.addEventListener('resize', function() {
+        panorama.resize();
+    });
+</script>
+</body>
+</html>

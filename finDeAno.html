@@ -108,6 +108,10 @@
             padding: 15px;
             z-index: 10;
         }
+        .header-contact-link {
+            margin-right: clamp(20px, 3vw, 48px);
+            font-weight: 500;
+        }
         .footer-overlay {
             position: absolute;
             bottom: 0;
@@ -130,7 +134,10 @@
     <a class="navbar-brand spira-logo-top" href="index.html">
         <img src="assets/img/Logo-SPIRA_blanco.png" alt="Logo Spira Events" class="brand-logo" height="200">
     </a>
-    <a href="contacto.html" class="text-white text-decoration-none">Contacto</a>
+
+    <a href="contacto.html" class="text-white text-decoration-none header-contact-link">
+        Contacto
+    </a>
 </div>
 
 <div id="panorama-container">
@@ -154,7 +161,7 @@
     // Inicializar Pannellum
     var panorama = pannellum.viewer('panorama-container', {
         "type": "equirectangular",
-        "panorama": "assets/img/panoramica-3.jpeg", // Usa tu imagen panorámica aquí
+        "panorama": "assets/img/finDeAno-panoramica.png", // Usa tu imagen panorámica aquí
         "autoLoad": true,
         "autoRotate": -1, // Rotación automática lenta (izquierda)
         "compass": false,

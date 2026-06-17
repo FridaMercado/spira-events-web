@@ -12,7 +12,46 @@ body {
 
 .text-main-green { color: #97BF3F !important; }
 .text-sub-green { color: #25D467 !important; }
+/* ==============================
+   TIPOGRAFÍAS GLOBALES
+   ============================== */
 
+:root {
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Questrial', 'Open Sans', sans-serif;
+}
+
+/* Cuerpo general del sitio */
+body {
+    font-family: var(--font-body);
+}
+
+/* Títulos principales */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar,
+.btn,
+.banner-text,
+.spira-banner-band h1,
+.text-main-green,
+.text-sub-green {
+    font-family: var(--font-title);
+}
+
+/* Párrafos y textos descriptivos */
+p,
+li,
+span,
+a,
+input,
+textarea,
+label {
+    font-family: var(--font-body);
+}
 
 /* Página activa: Blanco y subrayado */
 .nav-link.active {
@@ -116,38 +155,88 @@ body {
 .spira-sub-btn:hover {
     color: #97BF3F;
 }
-
 /* ==============================
-   BANNER PRINCIPAL (Updated)
+   BANNER PRINCIPAL CON VIDEO
    ============================== */
+
 .spira-banner {
     position: relative;
     width: 100%;
+    height: 350px;
     overflow: hidden;
+    background-color: #000000;
 }
-.spira-banner-image {
+
+/* Video de fondo */
+.spira-banner-video {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: 350px; /* Altura del banner */
+    height: 100%;
     object-fit: cover;
     display: block;
+    z-index: 1;
 }
+
+/* Capa oscura para mejorar legibilidad */
+.spira-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.38);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Banda central encima del video */
 .spira-banner-band {
     position: absolute;
     top: 50%;
     left: 0;
     width: 100%;
     transform: translateY(-50%);
-    /* Color #284B59 con 78% de transparencia */
-    background-color: rgba(40, 75, 89, 0.78);
+    background-color: rgba(40, 75, 89, 0.72);
     padding: 40px 0;
     text-align: center;
-    z-index: 10;
+    z-index: 3;
 }
+
+/* Texto del banner */
+.spira-banner-band h1,
 .banner-text {
     color: #ffffff;
-    font-size: 2.2rem;
-    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
     margin: 0;
+}
+
+/* Ajuste para tablet y móvil */
+@media (max-width: 768px) {
+    .spira-banner {
+        height: 280px;
+    }
+
+    .spira-banner-band {
+        padding: 30px 20px;
+    }
+
+    .spira-banner-band h1,
+    .banner-text {
+        font-size: clamp(1.6rem, 7vw, 2.4rem);
+    }
+}
+
+/* Accesibilidad: si el usuario prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .spira-banner-video {
+        display: none;
+    }
+
+    .spira-banner {
+        background-image: url("../img/banner.jpg");
+        background-size: cover;
+        background-position: center;
+    }
 }
 
 /* ==============================
@@ -170,7 +259,7 @@ body {
     color: #97BF3F !important;
     font-weight: 300; /* Letra más delgada */
     letter-spacing: 0.5px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     position: relative; /* Necesario para la raya personalizada */
     padding-bottom: 5px; /* Da espacio para la raya */
     transition: color 0.3s ease;
@@ -198,6 +287,19 @@ body {
 /* ==============================
    CARRUSEL SWIPER (Efecto Center Mode)
    ============================== */
+
+.carousel-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.carousel-link:hover {
+    color: inherit;
+    text-decoration: none;
+}
 .spiraSwiper {
     width: 100%;
     padding-top: 30px;
@@ -340,7 +442,6 @@ footer {
     /* Difuminado de 1A4050 hacia negro */
     background: linear-gradient(to top, #1A4050 0%, #000000 100%);
     padding: 60px 0 40px 0;
-    margin-top: 50px;
 }
 .footer-logo {
     max-height: 50px; /* Tamaño logo inferior */
@@ -519,79 +620,129 @@ footer {
     background-color: #97BF3F;
     opacity: 1;
 }
-/* Contenedor principal de la animación */
+
+/* ==============================
+   PROPUESTA DE VALOR - ESFERAS GSAP
+   ============================== */
+
+/* Contenedor general de las esferas */
 .value-carousel {
     position: relative;
-    height: 600px; /* Ajusta según el alto que desees */
+    min-height: 520px;
     max-width: 900px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.value-item {
+/* Cada esfera + texto ocupa el mismo espacio */
+.value-item,
+.sphere-anim {
     position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     width: 100%;
-    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); /* Transición suave */
-    cursor: pointer;
-    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, 120px, 0) scale(0.75);
+    pointer-events: none;
+    will-change: transform, opacity;
 }
 
+/* Contenedor del video circular */
 .sphere-wrapper {
-    width: 250px; /* Tamaño base de la esfera */
+    width: clamp(210px, 28vw, 270px);
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
+/* Video de la esfera */
 .sphere-img {
     width: 100%;
-    border-radius: 90%;
-    transition: transform 0.7s ease;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    transform: translateZ(0);
 }
 
+/* Texto lateral */
 .value-text {
     flex: 1;
     text-align: left;
-    padding-left: 30px;
-    transition: opacity 0.5s ease, transform 0.7s ease;
+    padding-left: clamp(24px, 4vw, 48px);
+}
+
+.value-text h4 {
+    margin-bottom: 12px;
 }
 
 .value-text p {
     color: #ffffff;
-    max-width: 400px;
+    max-width: 430px;
+    line-height: 1.6;
+    margin-bottom: 0;
 }
 
-/* --- ESTADOS DE POSICIÓN ESFERAS--- */
-/* Nuevo estado base para las esferas en GSAP */
-.value-carousel {
-    position: relative;
-    height: 400px; /* Reducimos la altura, GSAP hará el resto */
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sphere-anim {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    /* Inician escondidas abajo, GSAP las moverá */
-    transform: translateY(100px) scale(0.65);
-    opacity: 0;
-    z-index: 1;
-}
-
-/* Ajustes para móviles: se apilan para que no pierdan legibilidad */
+/* Mobile: quitamos la animación pinned y mostramos tarjetas limpias */
 @media (max-width: 768px) {
-    .value-carousel { height: 800px; }
-    .value-item { flex-direction: column; text-align: center; }
-    .value-text { text-align: center; padding-left: 0; padding-top: 15px; }
-    .sphere-wrapper { width: 200px; }
+    .value-carousel {
+        min-height: auto;
+        display: grid;
+        gap: 56px;
+        overflow: visible;
+    }
+
+    .value-item,
+    .sphere-anim {
+        position: relative;
+        inset: auto;
+        flex-direction: column;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .sphere-wrapper {
+        width: 210px;
+    }
+
+    .value-text {
+        text-align: center;
+        padding-left: 0;
+        padding-top: 18px;
+    }
+
+    .value-text p {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
+
+/* ==============================
+   SECCIÓN FULL WIDTH NEGRA
+   PROPUESTA DE VALOR
+   ============================== */
+
+.proposal-section-full {
+    width: 100%;
+    background-color: #000000;
+    padding: 80px 0 100px;
+    margin: 80px 0 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Mantiene el contenido centrado sin limitar el fondo negro */
+.proposal-section-full .proposal-container {
+    position: relative;
+    z-index: 1;
 }
 
 /* ==============================

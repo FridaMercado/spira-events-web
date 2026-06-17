@@ -9,9 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&family=Questrial&display=swap" 
+    rel="stylesheet">    
 </head>
 <body>
-
+<div class="spira-lines-bg"></div>
 <nav class="navbar navbar-expand-lg navbar-dark spira-navbar">
     <div class="container">
         <a class="navbar-brand spira-logo-top" href="index.html">
@@ -32,47 +37,88 @@
 </nav>
 
 <section class="banner-section spira-banner">
-    <img src="assets/img/banner.jpg" alt="Banner Evento" class="spira-banner-image">
+    
+    <video 
+        class="spira-banner-video" 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        preload="metadata"
+        poster="assets/img/banner.jpg"
+        aria-hidden="true">
+        <source src="assets/video/banner-lights.mp4" type="video/mp4">
+        Tu navegador no soporta videos.
+    </video>
+
+    <div class="spira-banner-overlay"></div>
+
     <div class="spira-banner-band">
         <h1 class="text-uppercase text-white fw-light">Inspirando emociones</h1>
     </div>
+
 </section>
 
 <section class="mt-5 pt-4 text-center overflow-hidden" style="width: 100%;">
     <div class="swiper spiraSwiper">
         <div class="swiper-wrapper">
+
             <div class="swiper-slide">
-                <h6 class="slide-title">Team Buildings</h6>
-                <img src="assets/img/team-building.jpg" alt="Team Buildings">
-            </div>
-            <div class="swiper-slide">
-                <h6 class="slide-title">Experiencias Sensoriales</h6>
-                <img src="assets/img/experiencias-sensoriales.jpeg" alt="Experiencias Sensoriales">
-            </div>
-            <div class="swiper-slide">
-                <a href="finDeAno.html">
-                    <h6 class="slide-title">Fiestas de fin de año y temáticas</h6>
-                    <img src="assets/img/fiesta-fin-de-ano.jpg" alt="Fiestas de fin de año">
+                <a href="teamBuildings.html" target="_blank" rel="noopener noreferrer" class="carousel-link">
+                    <h6 class="slide-title">Team Buildings</h6>
+                    <img src="assets/img/team-building.jpg" alt="Team Buildings">
                 </a>
             </div>
+
             <div class="swiper-slide">
-                <h6 class="slide-title">Town Halls</h6>
-                <img src="assets/img/town-halls.jpg" alt="Town Halls">
+                <a href="retirosEmpresariales.html" target="_blank" rel="noopener noreferrer" class="carousel-link">
+                    <h6 class="slide-title">Retiros empresariales</h6>
+                    <img src="assets/img/retiros.jpg" alt="Retiros empresariales">
+                </a>
             </div>
+
             <div class="swiper-slide">
-                <h6 class="slide-title">Lanzamientos de Marcas</h6>
-                <img src="assets/img/lanzamiento-marca.jpg" alt="Lanzamiento de Marcas">
+                <a href="townHallsConferencias.html" target="_blank" rel="noopener noreferrer" class="carousel-link">
+                    <h6 class="slide-title">Town Halls y conferencias</h6>
+                    <img src="assets/img/town-halls.jpg" alt="Town Halls y conferencias">
+                </a>
             </div>
+
+            <div class="swiper-slide">
+                <a href="congresosExpos.html" target="_blank" rel="noopener noreferrer" class="carousel-link">
+                    <h6 class="slide-title">Congresos y expos</h6>
+                    <img src="assets/img/congresos.jpg" alt="Congresos y expos">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="finDeAno.html" target="_blank" rel="noopener noreferrer" class="carousel-link">
+                    <h6 class="slide-title">Fiestas de fin de año y temáticas</h6>
+                    <img src="assets/img/fiesta-fin-de-ano.jpg" alt="Fiestas de fin de año y temáticas">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="activacionesLanzamientos.html" target="_blank" rel="noopener noreferrer" class="carousel-link">
+                    <h6 class="slide-title">Activaciones y lanzamientos</h6>
+                    <img src="assets/img/activaciones.webp" alt="Activaciones y lanzamientos">
+                </a>
+            </div>
+
         </div>
 
         <div class="swiper-button-prev custom-swiper-btn"></div>
         <div class="swiper-button-next custom-swiper-btn"></div>
         <div class="swiper-pagination"></div>
     </div>
-    <p class="text-main-green mt-4 fw-light">¿Listo para lo extraordinario? Entra en modo interactivo</p>
+
+    <p class="text-main-green mt-4 fw-light">
+        ¿Listo para lo extraordinario? Entra en modo interactivo
+    </p>
 </section>
 
-<section class="container mt-5 pt-5 text-center proposal-container" id="propuesta-section">
+<section class="proposal-section-full text-center" id="propuesta-section">
+    <div class="container proposal-container">
     <h2 class="text-main-green mb-5 text-uppercase">Nuestra propuesta de valor</h2>
 
     <div class="value-carousel" id="valueCarousel">
@@ -93,7 +139,7 @@
         <div class="value-item sphere-anim">
             <div class="sphere-wrapper">
                 <video class="sphere-img" autoplay loop muted playsinline>
-                    <source src="assets/video/esfera_2.mp4" type="video/mp4">
+                    <source src="assets/video/esfera_3.mp4" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
@@ -106,7 +152,7 @@
         <div class="value-item sphere-anim">
             <div class="sphere-wrapper">
                 <video class="sphere-img" autoplay loop muted playsinline>
-                    <source src="assets/video/esfera_3.mp4" type="video/mp4">
+                    <source src="assets/video/esfera_1.mp4" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
@@ -117,8 +163,9 @@
         </div>
 
     </div>
+    </div>
+    </div>
 </section>
-
 <footer>
     <div class="container">
         <div class="row align-items-center">

@@ -50,35 +50,71 @@ document.addEventListener("DOMContentLoaded", function() {
     if (typeof gsap !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
-        // ==========================================
-        // 3. ANIMACIÓN ESFERAS (Página Inicio)
-        // ==========================================
-        const propuestaSection = document.getElementById('propuesta-section');
-        if (propuestaSection) {
-            const spheres = gsap.utils.toArray('.sphere-anim');
+// ==========================================
+// 3. ANIMACIÓN ESFERAS - PROPUESTA DE VALOR
+// ==========================================
+const propuestaSection = document.getElementById('propuesta-section');
 
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#propuesta-section",
-                    start: "center center",
-                    end: "+=1500",
-                    pin: true,
-                    scrub: 1,
-                }
+if (propuestaSection && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 769px)", () => {
+        const spheres = gsap.utils.toArray(".sphere-anim");
+
+        // Estado inicial limpio para todas las esferas
+        gsap.set(spheres, {
+            autoAlpha: 0,
+            y: 120,
+            scale: 0.75,
+            zIndex: 1
+        });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: propuestaSection,
+                start: "top top",
+                end: "+=2600",
+                pin: true,
+                scrub: 1.4,
+                anticipatePin: 1,
+                invalidateOnRefresh: true
+            }
+        });
+
+        spheres.forEach((sphere, index) => {
+            const isLast = index === spheres.length - 1;
+
+            // Entrada de la esfera actual
+            tl.to(sphere, {
+                autoAlpha: 1,
+                y: 0,
+                scale: 1,
+                zIndex: 10,
+                duration: 1.2,
+                ease: "power2.out"
             });
 
-            spheres.forEach((sphere, i) => {
+            // Pausa visual para que el usuario alcance a leer
+            tl.to(sphere, {
+                duration: 0.8
+            });
+
+            // Salida suave, excepto en la última esfera
+            if (!isLast) {
                 tl.to(sphere, {
-                    y: 0, scale: 1, opacity: 1, zIndex: 10, duration: 1
+                    autoAlpha: 0,
+                    y: -120,
+                    scale: 0.78,
+                    zIndex: 1,
+                    duration: 1.2,
+                    ease: "power2.inOut"
                 });
-
-                if (i !== spheres.length - 1) {
-                    tl.to(sphere, {
-                        y: -150, scale: 0.65, opacity: 0.2, zIndex: 1, duration: 1
-                    }, "+=0.5");
-                }
-            });
-        }
+            }
+        });
+    });
+}
 
         // ==========================================
         // 4. LÍNEA DEL TIEMPO (Página Nosotros)
