@@ -116,6 +116,34 @@ if (propuestaSection && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 
     });
 }
 
+// ==========================================
+// ANIMACIÓN ESFERAS EN MOBILE
+// Movimiento suave al hacer scroll
+// ==========================================
+
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.matchMedia().add("(max-width: 768px)", () => {
+        const mobileSpheres = gsap.utils.toArray(".sphere-anim");
+
+        mobileSpheres.forEach((sphere) => {
+            gsap.from(sphere, {
+                opacity: 0,
+                y: 60,
+                scale: 0.92,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: sphere,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+    });
+}
+
         // ==========================================
         // 4. LÍNEA DEL TIEMPO (Página Nosotros)
         // ==========================================
