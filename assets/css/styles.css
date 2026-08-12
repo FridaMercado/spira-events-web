@@ -10,8 +10,8 @@ body {
     overflow-x: hidden;
 }
 
-.text-main-green { color: #97BF3F !important; }
-.text-sub-green { color: #25D467 !important; }
+.text-main-green { color: #284B59 !important; }
+.text-sub-green { color: #B6D96A !important; }
 /* ==============================
    TIPOGRAFÍAS GLOBALES
    ============================== */
@@ -55,7 +55,7 @@ label {
 
 /* Página activa: Blanco y subrayado */
 .nav-link.active {
-    color: #ffffff !important;
+    color: #284B59 !important;
     text-decoration: underline;
     text-underline-offset: 8px;
     text-decoration-thickness: 2px;
@@ -249,10 +249,10 @@ label {
     justify-content: space-between;
 }
 .nav-link {
-    color: #97BF3F !important;
+    color: #284B59 !important;
     font-weight: 300; /* Letra más delgada */
     letter-spacing: 0.5px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     position: relative; /* Necesario para la raya personalizada */
     padding-bottom: 5px; /* Da espacio para la raya */
     transition: color 0.3s ease;
@@ -330,8 +330,8 @@ label {
 }
 /* 4. TÍTULO CENTRAL ACTIVO (Grande y con Resalte) */
 .swiper-slide-active .slide-title {
-    font-size: 2.5rem !important; /* Tamaño "Extra Large" */
-    font-weight: 700 !important; /* Negrita/Grosor máximo */
+    font-size: 1.5rem !important; /* Tamaño "Extra Large" */
+    font-weight: 500 !important; /* Negrita/Grosor máximo */
     opacity: 1 !important;
     margin-bottom: 30px; /* Equivalente al mb-5 de Bootstrap */
     letter-spacing: 3px;
@@ -834,37 +834,6 @@ footer {
    PÁGINA EXPERIENCIAS / SERVICIOS
    ============================== */
 
-/* Fondo de líneas / espirales */
-/* ==============================
-   FONDO DE LÍNEAS / ESPIRALES (PÁGINA EXPERIENCIAS)
-   ============================== */
-.spira-lines-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    /* 1. Pon aquí el nombre exacto con el que guardaste la imagen de la espiral */
-    background-image: url('../img/tunnel-grid-vector.jpg');
-
-    /* 2. Hacemos que se repita como un patrón */
-    background-repeat: repeat;
-
-    /* 3. AGRANDAMOS LA IMAGEN. 1200px hace que la espiral se vea gigante y abarque mucho espacio.
-          Puedes subir o bajar este número (ej. 800px o 1500px) hasta que te guste el tamaño */
-    background-size: 2000px;
-
-    /* 4. Posicionamos desde el centro para que los cortes del patrón se vean simétricos */
-    background-position: center;
-
-    /* 5. OPACIDAD: La bajamos muchísimo (al 10% o 15%) para lograr el efecto sutil del mockup
-          y que las letras blancas se sigan leyendo perfectamente */
-    opacity: 0.15;
-
-    z-index: -1; /* Lo manda al fondo de todo */
-    pointer-events: none; /* Evita que el fondo estorbe al hacer clics */
-}
 
 /* Subtítulos de las tarjetas (Azul Turquesa) */
 .service-subtitle {
@@ -1531,7 +1500,7 @@ select.tech-input option {
     }
 
     .spira-nav-items .nav-link {
-        font-size: 1.15rem;
+        font-size: 1rem;
         text-align: center;
         padding: 10px 0;
     }
